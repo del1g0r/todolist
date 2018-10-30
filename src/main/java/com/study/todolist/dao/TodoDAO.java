@@ -30,7 +30,7 @@ public class TodoDAO {
         }
     }
 
-    public void update(int id, Todo item) throws ServletException {
+    public void update(Todo item) throws ServletException {
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_SQL);) {
             statement.setString(1, item.getName());

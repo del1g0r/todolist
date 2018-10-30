@@ -24,7 +24,6 @@ public class AddTaskServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         PageGenerator pageGenerator = PageGenerator.instance();
         String page = pageGenerator.getPage("addTask.html", null);
-
         resp.getWriter().write(page);
     }
 
@@ -33,9 +32,7 @@ public class AddTaskServlet extends HttpServlet {
         String name = req.getParameter("name");
         int priority = Integer.parseInt(req.getParameter("priority"));
         LocalDate dueDate = LocalDate.parse(req.getParameter("duedate"));
-
         dao.add(new Todo(name, dueDate, priority));
-
         resp.sendRedirect("/todolist");
     }
 }

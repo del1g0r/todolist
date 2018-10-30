@@ -36,10 +36,8 @@ public class EditTaskServlet extends HttpServlet {
         String name = req.getParameter("name");
         int priority = Integer.parseInt(req.getParameter("priority"));
         LocalDate dueDate = LocalDate.parse(req.getParameter("duedate"));
-
         Todo item = dao.get(RequestParser.getIdfromUri(req.getRequestURI()));
-        dao.update(item.getId(), new Todo(item.getId(), name, dueDate, priority));
-
+        dao.update(new Todo(item.getId(), name, dueDate, priority));
         resp.sendRedirect("/todolist");
     }
 }
